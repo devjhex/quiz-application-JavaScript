@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind utilities;
+@tailwind components;
+
+
+@layer components {
+    .page {
+        @apply hidden w-full min-h-screen animate-fadeIn px-4 pt-5 md:pt-0;
+    }
+
+    .active {
+        @apply block;
+    }
+}
+
+progress::-webkit-progress-bar {
+    background-color: #6A2D66;
+    border: 1px solid #f97316;
+    padding:.2rem;
+}
+
+progress::-webkit-progress-value {
+    background-color: rgb(249, 115, 22);;
+    transition: all .2s;
+}
+
+html::-webkit-scrollbar{
+    width: 8px;
+    border-radius: .5rem;
+    
+}
+    
+html::-webkit-scrollbar-thumb{
+    background-color: rgb(249,115,22);
+    border-radius: .5rem;
+    border-color:#6A2D66;
+    transition-property: border;
+    transition-duration: .3s;
+}

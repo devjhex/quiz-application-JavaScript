@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="output.css">
+        <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+        <title>Learn with Eddie</title>
+
+        <meta name="Learn with Eddie" description="A quiz application that teaches by asking simple questions.">
+
+        <!-- Primary Meta tags. -->
+        <meta
+        name="title" 
+        content="Learn With Eddie (Quiz App) | devjhex"
+        >
+        <meta
+        name="description" 
+        content="A quiz application that teaches by asking simple questions."
+        >
+        <meta
+        name="author"
+        content="Jonah Ssegawa"
+        >
+        <meta
+        name="keywords"
+        content="Quiz App, Full-stack CRUD app, DOM manipulation, Responsive design, Frontend development, JavaScript project"
+        >
+
+        <!-- Open Graph Metadata -->
+        <!-- Facebook -->  <!-- type, url, title description, image -->
+        <meta
+        property="og:type"
+        content="website"
+        >
+
+        <!-- <meta
+        property="og:url"
+        content="https://devjhex-nested-comments.netlify.app/"
+        > -->
+
+        <meta
+        property="og:title"
+        content="Learn With Eddie (Quiz App) | devjhex"
+        >
+        <meta
+        property="og:description"
+        content="A quiz application that teaches by asking simple questions."
+        >
+        
+        <!-- Twitter -->
+        <meta
+        property="twitter:card"
+        content="summary"
+        >
+        <meta
+        property="twitter:title"
+        content="Learn With Eddie (Quiz App) | devjhex"
+        >
+        <meta
+        property="twitter:description"
+        content="A quiz application that teaches by asking simple questions."
+        >
+    <!--  <meta
+        property="twitter:url"
+        content="https://devjhex-nested-comments.netlify.app/"
+        > -->
+    </head>
+    <body class="bg-[#6A2D66]">
+
+        <!-- Starting page -->
+        <div class="page active" id="start">
+            <div class="min-h-screen flex items-center justify-center">
+                <div class="flex flex-col gap-[1rem] items-center p-4 md:w-10/12 max-w-[600px]">
+
+                    <div class="flex items-center justify-center flex-col startImgContainer animate-hexPulse">
+                        <img src="./images/pencil.svg" alt="pencil">
+                    <img src="./images/Eddie.svg" alt="Eddie"> 
+                    </div>
+                    <div class="w-full startBtnContainer animate-fadeIn hidden">
+                        <a href="#" data-target="customSettings" class="bg-orange-500 block w-full p-3 md:p-4 md:text-2xl rounded-full text-white font-semibold text-center nav-link">Start Learning</a>
+
+                    </div>
+
+                    <div class="block w-full p-3 md:p-4 md:text-2xl rounded-full text-white font-semibold text-center loadingText">
+                        Loading Assets...
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Custom settings page -->
+        <div class="page" id="customSettings">
+            <div class="min-h-screen flex flex-col items-center justify-center">
+                <h1 class="text-[1.5rem] sm:text-[2rem] md:text-[2.5rem] text-orange-500 font-bold font-sans">Choose Category</h1>
+
+            <div class="w-10/12 max-w-[600px] p-2 flex items-center flex-col gap-[2rem] ">
+                <div class="w-full p-2 md:p-3 rounded-[.5rem] border border-orange-500 cursor-pointer">
+
+                    <select id="categories" class="bg-[#6A2D66] text-orange-500 p-2 font-bold w-full cursor-pointer border-none outline-none text-center text-xl sm:text-2xl md:text-3xl">
+                        <option value="Any Category">Random Category</option>
+                    </select>
+                </div>
+
+                <div class=" flex items-center gap-[1rem] flex-col">
+
+                    <div class="flex flex-col items-center gap-[1rem]">
+                        <h1 class="text-center text-[1rem] s:text-[1.5rem] sm:text-[2rem]  leading-tight text-orange-500 font-bold font-sans">Number of Questions (Numbers Only)</h1>
+
+                    <div class="hidden animate-fadeIn  invalidNotificationContainer">
+                        
+                        
+                        <div class="border-2 border-orange-500 rounded-[.5rem] p-2 animate-invalid">
+
+                            <p class="text-center text-orange-500 animate-notification transition-colors font-mono">You have input text characters instead of numbers</p>
+                        </div>
+                    </div>
+                        
+                    </div>
+                    <div class="
+                    flex items-center justify-center gap-[.5rem]">
+                        <button type="button" class="flex flex-col items-center w-[25px] h-full md:w-[40px] text-orange-500 text-[2rem] md:text-[3rem] minus">-</button>
+                        <div class="w-1/2 flex p-2 md:p-3 rounded-[.5rem] cursor-pointer border-2 border-orange-500 transition-colors inputContainer">
+
+                            <input type="text" id="number" value="5" class="w-full text-[1rem] s:text-[1.5rem]  bg-[#6A2D66] text-orange-500 font-bold border-none outline-none text-center">
+                        </div>
+
+                        <button type="button" class="flex flex-col items-center w-[25px] h-full md:w-[40px] text-orange-500 text-[2rem] md:text-[3rem] add">+</button>
+                    </div>
+                    <div class="flex gap-[1rem]">
+                        <code class="text-[1rem] s:text-[1.5rem] sm:text-[2rem] leading-tight text-orange-500 font-bold">(Maximum:15)</code>
+                    </div>
+                </div>
+
+                <div class="w-full flex items-center justify-center">
+                    <button class=" bg-orange-500 p-2 md:p-3 rounded-[.5rem] font-semibold text-xl sm:text-2xl nav-link disabled:bg-orange-300 disabled:text-slate-500 transition-colors duration-[.3s] startBtn" data-target="quiz">Start Quiz</button>
+                </div>
+            </div>
+            </div>      
+        </div>
+
+        <!-- Quiz page -->
+        <div class="page" id="quiz">
+            <!-- loader showing the waiting animation -->
+            <div class="loader">
+            <div class="bg-[#6A2D66] min-h-screen flex items-center justify-center">
+                <div class="flex flex-col gap-[1rem] items-center p-4 md:w-10/12 max-w-[600px] ">
+                    <div class="flex items-center justify-center flex-col animate-hexPulse">
+
+                        <img src="./images/pencil.svg" alt="pencil">
+                        <img src="./images/Eddie.svg" alt="Eddie"> 
+                    </div>
+
+                    <div class="py-[10px] px-[5px] flex items-center w-[250px] h-[15px] border border-orange-500 ">
+                        <div class="bg-orange-500 h-[11px] animate-load origin-left">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+            <div class="questionPage hidden">
+            <div class="flex items-center justify-center md:justify-normal md:mx-auto p-4 gap-[2rem]  md:max-w-[600px]">
+
+                <progress value="1" max="5" class="transition-all duration-[.5s]"></progress>
+                <span class="questionsAnswered text-orange-500 font-bold text-[1.3rem] sm:text-[1.5rem] md:text-[1.6rem] progressNotification">1/5</span>
+            </div>
+            <div class="questionContainer">
+            </div>
+            </div>
+        </div>
+
+        <!-- Results page -->
+        <div class="page" id="results">
+            <div class="bg-[#6A2D66] min-h-screen flex flex-col gap-[1rem] items-center justify-center">
+            
+                <div class="flex flex-col gap-[1rem]">
+
+                    <h1 class="text-[1.5rem] sm:text-[2rem] md:px-4 md:text-[2.5rem] text-orange-500 font-bold font-sans text-center animate-hexPulse"><code>Congratulations on Completing your test</code></h1>
+                   
+                    <h1 class=" text-[1.5rem] sm:text-[2rem] md:text-[2.5rem] text-orange-500 font-bold font-sans text-center"> <code class="comment">
+                    </code></h1>
+                    <h1 class="text-[2rem] sm:text-[3rem] md:text-[5rem] text-orange-500 font-bold font-sans text-center "><code class="results"></code></h1>
+                </div>
+
+                <div class="w-10/12 max-w-[600px] flex flex-col gap-[1rem] items-center">
+                    <a href="#" data-target="customSettings" class="w-max mx-auto bg-orange-500 text-[#6A2D66] p-2 md:p-3 rounded-[.5rem] font-bold text-xl sm:text-2xl nav-link">Play Again</a>
+                    <a href="#" data-target="start" class="w-max mx-auto bg-orange-500 text-[#6A2D66] p-2 md:p-3 rounded-[.5rem] font-bold text-xl sm:text-2xl nav-link">Go to homepage</a>
+                    <button class="w-max mx-auto bg-orange-500 text-[#6A2D66] p-2 md:p-3 rounded-[.5rem] font-bold text-xl sm:text-2xl nav-link showResults" data-target="yourAnswers">See Your Answers </button>
+                </div>
+                
+            </div>            
+        </div>
+        
+        <!-- Your answers page for corrections. -->
+        <div class="page" id="yourAnswers">
+            <div class="flex flex-col gap-[1rem] pt-5 userAnswersContainer">
+                <div class="border-2 border-orange-500 p-4 rounded-[.5rem] flex flex-col gap-[1rem] md:w-11/12 max-w-[800px] md:mx-auto text-[1.3rem] md:text-[1.5rem]">
+                    <h1 class="text-orange-500 font-semibold">1. What did devjhex start with when learning how to code??</h1>
+        
+                    <div class="bg-orange-500 rounded-[.5rem] text-[#6A2D66] p-4 flex flex-col gap-[1rem]">
+        
+                        <span class="text-red-600 font-bold">
+                            Your Answer : M1 Max
+                        </span>
+                        <span class="text-green-400 font-bold">
+                            Correct Answer : A Helio p22
+                        </span>
+                        
+                    </div>
+                </div>
+                <div class="border-2 border-orange-500 p-4 rounded-[.5rem] flex flex-col gap-[1rem] md:w-11/12 max-w-[800px] md:mx-auto text-[1.3rem] md:text-[1.5rem]">
+                    <h1 class="text-orange-500 font-semibold">2. What was the kind of woman devjhex wanted??</h1>
+        
+                    <div class="bg-orange-500 rounded-[.5rem] text-[#6A2D66] p-4 flex flex-col gap-[1rem]">
+    
+        
+                        <span class="text-red-600 font-bold">
+                            Your Answer : A black American 
+                        </span>
+                        <span class="text-green-400 font-bold">
+                            Correct Answer : An Ethiopian British speaking Eunuch.
+                        </span>
+                        
+                    </div>
+                </div>
+                <div class="border-2 border-orange-500 p-4 rounded-[.5rem] flex flex-col gap-[1rem] md:w-11/12 max-w-[800px] md:mx-auto text-[1.3rem] md:text-[1.5rem]">
+                    <h1 class="text-orange-500 font-semibold">2. What was the kind of woman devjhex wanted??</h1>
+        
+                    <div class="bg-orange-500 rounded-[.5rem] text-[#6A2D66] p-4 flex flex-col gap-[1rem]">
+    
+        
+                        <span class="text-green-400 font-bold">
+                            Your Answer : A black American 
+                        </span>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="py-4 mx-auto flex items-end md:w-11/12 max-w-[800px]">
+                <button class="w-max ml-auto bg-orange-500 text-[#6A2D66] p-2 md:p-3 rounded-[.5rem] font-bold text-xl sm:text-2xl nav-link backToResults" data-target="results">Back To Results.</button>
+            </div>
+        </div>
+
+        <script src="./src/main.js" type="module"></script>   
+
+    </body>
+</html>
