@@ -8,7 +8,7 @@ Quiz Application
 
 <h2>
 
-[🚀Live Site](<!-- link to the site -->)
+[🚀Live Site](https://devjhex-quiz-app.netlify.app)
 
 </h2>
 </div>
